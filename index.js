@@ -55,7 +55,6 @@ const updateJson = (input, edit) => {
   keys.forEach((key) => {
     switch (key) {
       case "add_song":
-
         for (const song of edit["add_song"]) {
           if (containsValue(input, song["song_id"])) {
             input["playlists"].find(obj => obj["id"] === song["playlist_id"])["song_ids"].push(song["song_id"])
