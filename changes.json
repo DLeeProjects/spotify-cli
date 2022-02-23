@@ -1,0 +1,28 @@
+{
+  "add_song": [
+    {
+      "playlist_id": "1",
+      "song_id": "40"
+    },
+    {
+      "playlist_id": "1",
+      "song_id": "45"
+    }
+  ],
+  "add_playlist": [
+    {
+      "owner_id": "2",
+      "song_ids": [
+        "1",
+        "3",
+        "5",
+        "25"
+      ]
+    }
+  ],
+  "remove_playlist": [
+    {
+      "id": "3"
+    }
+  ]
+}
