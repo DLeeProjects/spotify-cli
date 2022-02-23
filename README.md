@@ -44,8 +44,6 @@ David Lee
 > 7. Update package.json to allow for "projectname inputjson editjson outputjson" command in CLI
 > 8. Update README
 >
-> Went with a switch check just to mimic useReducer or reducers for redux.
->
 > Time Spent on the project: ~ 3 hours
 >
 > Originally planned for a 2 hour timer but used additional time to possibly consider a Ruby on Rails solution as well as refresh memory on Node.
