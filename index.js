@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-const fs = require('fs');
+const fs = require("fs");
 
 if (process.argv.length !== 5) {
   console.log("Usage: buildbook <spotify.json> <changes.json> <output-fil.json>");
@@ -46,7 +46,7 @@ const updateJson = (input, edit) => {
   const containsValue = (json, value) => {
     let contains = false;
     Object.keys(json).some(key => {
-      contains = typeof json[key] === 'object' ? containsValue(json[key], value) : json[key] === value;
+      contains = typeof json[key] === "object" ? containsValue(json[key], value) : json[key] === value;
       return contains;
     });
     return contains;
