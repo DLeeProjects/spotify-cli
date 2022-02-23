@@ -28,12 +28,23 @@ David Lee
 >
 > Compressing the JSON when communicating with web services.
 >
-> Avoiding parsing the JSON unless absolutely mandatory
+> Avoiding parsing the JSON unless absolutely mandatory.
 >
 > Updating JSON to use predefined typed classes.
 
 ### Design Decisions
-> Went with a switch check just to mimic useReducer or reducers for redux
+> Planning
+>
+> 1. Create functionality to read input JSON
+> 2. Create functionality to output JSON
+> 3. Create functionality to read edit JSON
+> 4. Combine functionality to read then output JSON to target file
+> 5. Allow for edits to input JSON before returning output JSON
+> 6. Implement functionality to require edits
+> 7. Update package.json to allow for "projectname inputjson editjson outputjson" command in CLI
+> 8. Update README
+>
+> Went with a switch check just to mimic useReducer or reducers for redux.
 >
 > Time Spent on the project: ~ 3 hours
 >
