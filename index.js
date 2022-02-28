@@ -9,14 +9,11 @@ if (process.argv.length !== 5) {
 
 const readJsonFile = async (filePath) => {
   return new Promise((resolve, reject) => {
-    if (!filePath) {
-      reject(Error("File not found"));
-    }
+    if (!filePath) reject(Error("File not found"));
 
     fs.readFile(filePath, "utf8", (err, data) => {
-      if (err) {
-        reject(err);
-      }
+      if (err) reject(err);
+
       resolve(JSON.parse(data));
     });
   })
