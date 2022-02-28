@@ -1,6 +1,9 @@
 #! /usr/bin/env node
 const fs = require("fs");
 const { performance } = require('perf_hooks');
+const Redis = require("redis");
+
+const client = Redis.createClient();
 
 if (process.argv.length !== 5) {
   console.log("Usage: buildbook <spotify.json> <changes.json> <output-file.json>");
@@ -9,18 +12,34 @@ if (process.argv.length !== 5) {
 
 const readJsonFile = async (filePath) => {
   return new Promise((resolve, reject) => {
-    if (!filePath) reject(Error("File not found"));
+    if (!filePath) return reject(Error("File not found"));
 
     fs.readFile(filePath, "utf8", (err, data) => {
-      if (err) reject(err);
+      if (err) return reject(err);
 
-      resolve(JSON.parse(data));
+      return resolve(JSON.parse(data));
     });
   })
 }
 
+const setCache = (key, callback) => {
+  return new Promise((resolve, reject) => {
+    client.get(key, async (err, data) => {
+      if (err) return reject(Error("Key not found"));
+
+      if (data) return resolve(JSON.parse(data));
+      const newData = await callback;
+      client.set(key, newData);
+      resolve(newData);
+    })
+  })
+}
+
 const readJson = async () => {
-  const inputJson = await readJsonFile(`./${process.argv[2]}`);
+  const inputJson = await setCache(`./${process.argv[2]}`,
+    readJsonFile(`./${process.argv[2]}`)
+  );
+
   const editJson = await readJsonFile(`./${process.argv[3]}`);
 
   updateJson(inputJson, editJson);
